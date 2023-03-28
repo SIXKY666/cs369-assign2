@@ -1,0 +1,76 @@
+[
+    {
+        "id": 1,
+        "name": "Bulbasaur",
+        "typeList": [
+            "Grass",
+            "Poison"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Ivysaur",
+        "typeList": [
+            "Grass",
+            "Poison"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Venusaur",
+        "typeList": [
+            "Grass",
+            "Poison"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Charmander",
+        "typeList": [
+            "Fire"
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Charmeleon",
+        "typeList": [
+            "Fire"
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Charizard",
+        "typeList": [
+            "Fire",
+            "Flying"
+        ]
+    },
+    {
+        "id": 7,
+        "name": "Squirtle",
+        "typeList": [
+            "Water"
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Wartortle",
+        "typeList": [
+            "Water"
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Blastoise",
+        "typeList": [
+            "Water"
+        ]
+    },
+    {
+        "id": 10,
+        "name": "Caterpie",
+        "typeList": [
+            "Bug"
+        ]
+    }
+]
