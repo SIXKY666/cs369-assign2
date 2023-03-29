@@ -1,10 +1,12 @@
 const express = require('express')
 const app = express()
 const fs = require('fs');
+const fileUpload = require('express-fileupload');
 const port = 4000
-const DATA_FILE = "./pokemon.json"
+const DATA_FILE = "./pokemons.json"
 
 app.use(express.json())
+app.use(fileUpload());
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
@@ -57,6 +59,15 @@ app.post('/pokemon', (req, res) => {
 app.put("/products/:id", (req, res) => {
     const id = req.params.id;
     const newData = req.body;
+    const { image } = req.files;
+
+    // If no image submitted, exit
+    if (!image) return res.sendStatus(400);
+
+    // Move the uploaded image to our upload folder
+    image.mv('../client/PUBLIC/images/' + image.name);
+
+    newData["filename"] = image.name;
 
     //read file and data
     fs.readFile(DATA_FILE, 'utf8', (err, data) => {
@@ -87,6 +98,18 @@ app.put("/products/:id", (req, res) => {
         });
     });
 })
+app.post('/upload', (req, res) => {
+    // Get the file that was set to our field named "image"
+    const { image } = req.files;
+
+    // If no image submitted, exit
+    if (!image) return res.sendStatus(400);
+
+    // Move the uploaded image to our upload folder
+    image.mv('../client/PUBLIC/images/' + image.name);
+
+    res.sendStatus(200);
+});
 app.delete("/products/:id", (req, res) => {
     const id = req.params.id;
     const data = JSON.parse(fs.readFileSync(DATA_FILE));
