@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import myImg from "../images/img.jpg";
 import "../index.css";
 export default function Pokemon() {
   const pokemon = useLoaderData();
@@ -7,8 +8,10 @@ export default function Pokemon() {
   const [q, setQ] = useState("");
   const [searchParam] = useState(["name", "name"]);
   const list = pokemon.map((item) => (
-    <div className="card max-w-sm rounded shadow-lg">
-      <div className="h-52 w-52 bg-slate-200"></div>
+    <div className="card max-w-sm rounded shadow-lg transition ease-in-out delay-100  hover:-translate-y-1 hover:scale-110 duration-200">
+      <div className="h-52 w-52 bg-slate-200">
+        <img src={myImg}></img>
+      </div>
       <div className="m-1">
         <p className="text-lg font-bold">{item.name}</p>
         <div className="flex flex-row gap-1">

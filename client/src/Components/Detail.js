@@ -15,11 +15,9 @@ const Detail = () => {
         <div className="flex flex-col">
           <div>
             <p>Type</p>
-            {
-              pokemon.typeList.map((type) => (
-                <p>{type}</p>
-              ))
-            }
+            {pokemon.typeList.map((type) => (
+            <p>{type}</p>
+          ))}
           </div>
         </div>
       </div>

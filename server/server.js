@@ -3,7 +3,7 @@ const app = express()
 const fs = require('fs');
 const fileUpload = require('express-fileupload');
 const port = 4000
-const DATA_FILE = "./pokemons.json"
+const DATA_FILE = "./pokemon.json"
 
 app.use(express.json())
 app.use(fileUpload());
