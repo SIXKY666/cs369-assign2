@@ -20,6 +20,7 @@ app.get('/pokemon', (req, res) => {
             res.send(JSON.parse(data));
         }
     });
+
 })
 
 app.get('/pokemon/:id', (req, res) => {
@@ -29,7 +30,7 @@ app.get('/pokemon/:id', (req, res) => {
             res.status(500).send({ error: 'Unable to read data file.' });
         } else {
             const pokemons = JSON.parse(data)
-            const pokemon = pokemons[Number(id)-1]
+            const pokemon = pokemons[Number(id) - 1]
             res.json(pokemon)
         }
     });
