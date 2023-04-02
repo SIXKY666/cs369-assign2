@@ -135,15 +135,15 @@
     },
     {
         "name": "Natdanai Khemtong",
-        "height": "ada",
-        "weight": "ada",
-        "category": "Poison",
-        "ability": "adad",
-        "typeList[]": [
-            "Fire",
-            "Water"
+        "height": "a",
+        "weight": "a",
+        "category": "Seed",
+        "ability": "a",
+        "typeList": [
+            "Fire"
         ],
-        "detail": "ada",
+        "detail": "a",
+        "id": 7838,
         "imgUrl": "./images/bulbasaur.png"
     }
 ]

@@ -1,10 +1,12 @@
 const express = require('express')
 const fs = require('fs');
 const path = require('path');
+const multer = require('multer');
 const fileUpload = require('express-fileupload');
 const port = 4000
 const DATA_FILE = "./pokemon.json"
 const app = express()
+const upload = multer({ dest: 'uploads/' });
 
 app.use(express.json())
 app.use(fileUpload());
@@ -53,6 +55,7 @@ app.get('/images/:filename',(req,res)=>{
 
 app.post('/pokemon', (req, res) => {
     const newData = req.body
+    newData.id = Number(req.body.id);
     const { image } = req.files
 
     // If no image submitted, exit

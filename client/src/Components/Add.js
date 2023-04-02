@@ -1,38 +1,16 @@
 import React, { useState } from "react";
-import { Form,redirect } from "react-router-dom"
+import { Form,redirect,useParams } from "react-router-dom"
 import "../index.css"
-async function createPokemon(newPokemon) {
-    try {
-        let response = await fetch('/pokemon', {
-            method: 'POST',
-            body: JSON.stringify(newPokemon),
-            headers: new Headers({ 'Content-Type': 'application/json' }),
-        }).then((res) => {
-            if (!res.ok) {
-                throw Error({ error: `Could not add new pokemon ${newPokemon.name}` })
-            }
-            return res.json()
-        })
-        return response
-    } catch (error) {
-        console.error('Error:', error)
-    }
-}
-export async function newAction({ request, params }) {
-    const formData = await request.formData()
-    const id = params.id
-    console.log(id);
-    let pokemon = Object.fromEntries(formData)
-    if (!pokemon) {
-        throw new Error('Error in inserting new pokemon ')
-    }
-    pokemon = { id: id, ...pokemon }
-    console.log(pokemon);
-     createPokemon(pokemon)
-    return redirect(`/pokemon/${id}`)
-}
+
 export default function Add() {
+    const checkboxOptions = [
+        { id: 1, label: 'Option 1', checked: false },
+        { id: 2, label: 'Option 2', checked: false },
+        { id: 3, label: 'Option 3', checked: false },
+        // Add more options as needed
+    ];
     const [imgSrc, setImgSrc] = useState('');
+    const { id } = useParams();
 
     const changeImg = (event) => {
         const file = event.target.files[0];
@@ -48,13 +26,12 @@ export default function Add() {
             setImgSrc(reader.result);
         };
     };
-
+    //! add function
     async function addPokemon(event) {
         event.preventDefault();
-
         const form = event.target;
         const formData = new FormData(form);
-
+        formData.append("id",id)
         try {
             const response = await fetch('/pokemon', {
                 method: 'POST',
@@ -64,9 +41,7 @@ export default function Add() {
             if (!response.ok) {
                 throw new Error(response.statusText);
             }
-
-            const data = await response.json();
-            console.log(data);
+            redirect(`/pokemon/${id}`)
         } catch (error) {
             console.error(error);
         }
@@ -115,27 +90,27 @@ export default function Add() {
                 <label className="form-label" >Type</label>
                 <div className="w-full ml-4">
                     <div className="flex items-center mb-4">
-                        <input type="checkbox" name="typeList[]" value="Fire" className="form-checkbox " />
+                        <input type="checkbox" name="typeList" value="Fire" className="form-checkbox " />
                         <label className="ml-2 text-lg font-medium text-red-500 ">Fire</label>
                     </div>
                     <div className="flex items-center mb-4">
-                        <input type="checkbox" name="typeList[]" value="Water" className="form-checkbox " />
+                        <input type="checkbox" name="typeList" value="Water" className="form-checkbox " />
                         <label className="ml-2 text-lg font-medium text-blue-400 ">Water</label>
                     </div>
                     <div className="flex items-center mb-4">
-                        <input type="checkbox" name="typeList[]" value="Grass" className="form-checkbox " />
+                        <input type="checkbox" name="typeList" value="Grass" className="form-checkbox " />
                         <label className="ml-2 text-lg font-medium text-green-500 ">Grass</label>
                     </div>
                     <div className="flex items-center mb-4">
-                        <input type="checkbox" name="typeList[]" value="Poison" className="form-checkbox " />
+                        <input type="checkbox" name="typeList" value="Poison" className="form-checkbox " />
                         <label className="ml-2 text-lg font-medium text-purple-500 ">Poison</label>
                     </div>
                     <div className="flex items-center mb-4">
-                        <input type="checkbox" name="typeList[]" value="Flying" className="form-checkbox " />
+                        <input type="checkbox" name="typeList" value="Flying" className="form-checkbox " />
                         <label className="ml-2 text-lg font-medium text-blue-300 ">Flying</label>
                     </div>
                     <div className="flex items-center mb-4">
-                        <input type="checkbox" name="typeList[]" value="Bug" className="form-checkbox " />
+                        <input type="checkbox" name="typeList" value="Bug" className="form-checkbox " />
                         <label className="ml-2 text-lg font-medium text-green-700">Bug</label>
                     </div>
                 </div>
