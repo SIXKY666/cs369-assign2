@@ -10,7 +10,8 @@
         "height": "5.18",
         "category": "Seed",
         "ability": "Overgrow",
-        "detail": "There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger."
+        "detail": "There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger.",
+        "imgUrl": "./images/avatar2.png"
     },
     {
         "id": 2,
@@ -23,7 +24,8 @@
         "height": "7.69",
         "category": "Seed",
         "ability": "Overgrow",
-        "detail": ""
+        "detail": "",
+        "imgUrl": "./images/avatar2.png"
     },
     {
         "id": 3,
@@ -36,7 +38,8 @@
         "height": "15.4",
         "category": "Seed",
         "ability": "Overgrow",
-        "detail": ""
+        "detail": "",
+        "imgUrl": "./images/avatar2.png"
     },
     {
         "id": 4,
@@ -48,7 +51,8 @@
         "height": "15.4",
         "category": "Seed",
         "ability": "Overgrow",
-        "detail": ""
+        "detail": "",
+        "imgUrl": "./images/avatar2.png"
     },
     {
         "id": 5,
@@ -60,7 +64,8 @@
         "height": "15.4",
         "category": "Seed",
         "ability": "Overgrow",
-        "detail": ""
+        "detail": "",
+        "imgUrl": "./images/avatar2.png"
     },
     {
         "id": 6,
@@ -73,7 +78,8 @@
         "height": "15.4",
         "category": "Seed",
         "ability": "Overgrow",
-        "detail": ""
+        "detail": "",
+        "imgUrl": "./images/avatar2.png"
     },
     {
         "id": 7,
@@ -85,7 +91,8 @@
         "height": "15.4",
         "category": "Seed",
         "ability": "Overgrow",
-        "detail": ""
+        "detail": "",
+        "imgUrl": "./images/avatar2.png"
     },
     {
         "id": 8,
@@ -97,7 +104,8 @@
         "height": "15.4",
         "category": "Seed",
         "ability": "Overgrow",
-        "detail": ""
+        "detail": "",
+        "imgUrl": "./images/avatar2.png"
     },
     {
         "id": 9,
@@ -109,7 +117,8 @@
         "height": "15.4",
         "category": "Seed",
         "ability": "Overgrow",
-        "detail": ""
+        "detail": "",
+        "imgUrl": "./images/avatar2.png"
     },
     {
         "id": 10,
@@ -121,6 +130,20 @@
         "height": "15.4",
         "category": "Seed",
         "ability": "Overgrow",
-        "detail": ""
+        "detail": "",
+        "imgUrl": "./images/avatar2.png"
+    },
+    {
+        "name": "Natdanai Khemtong",
+        "height": "ada",
+        "weight": "ada",
+        "category": "Poison",
+        "ability": "adad",
+        "typeList[]": [
+            "Fire",
+            "Water"
+        ],
+        "detail": "ada",
+        "imgUrl": "./images/bulbasaur.png"
     }
 ]
