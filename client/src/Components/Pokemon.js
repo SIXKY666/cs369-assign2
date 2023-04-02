@@ -9,7 +9,7 @@ export default function Pokemon() {
     <Link key={item.id} to={""+item.id}>
       <div className="card max-w-sm rounded shadow-lg transition ease-in-out delay-100  hover:-translate-y-1 hover:scale-110 duration-200">
         <div className="h-52 w-52 bg-slate-200">
-          <img src={myImg}></img>
+          <img src={myImg} alt="a"></img>
         </div>
         <div className="p-3">
           <p className="text-lg font-bold ">{item.name}</p>
