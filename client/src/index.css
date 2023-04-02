@@ -18,7 +18,18 @@ code {
 .pokemon-card{
   grid-template-columns: repeat(auto-fill, minmax(208px, 208px));
 }
-
+.home{
+  background-image:url("./background.jpg");
+}
+.form-label{
+  @apply block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2
+}
+.form-input{
+  @apply appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-300 rounded py-3 px-4 mb-3 focus:outline-none focus:bg-white
+}
+.form-checkbox{
+  @apply w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600
+}
 .input {
   @apply underline flex text-justify;
 }

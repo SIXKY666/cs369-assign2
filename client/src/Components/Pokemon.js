@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData, Form, Link } from "react-router-dom";
+import { useLoaderData, Form, Link, redirect } from "react-router-dom";
 import myImg from "../images/img.jpg";
 import "../index.css";
 export default function Pokemon() {
@@ -38,19 +38,18 @@ export default function Pokemon() {
             id="search-form"
             className="appearance-none bg-transparent border-none w-full text-orange-500  mr-3 py-1 px-2 leading-tight focus:outline-none"
             placeholder="Search for..."
-          // //onChange={(e) => setQ(e.target.value)}
-          // onChange={(event) => searchData(q)}
-
           />
         </Form>
 
 
-        <button
-          className="flex-shrink-0 bg-orange-500  hover:bg-orange-500 border-orange-500 hover:border-orange-500 text-sm border-4 text-white ml-4 rounded"
-          type="button"
-        >
-          Add Pokemon
-        </button>
+        <Form method="post">
+          <button
+            className="flex-shrink-0 bg-orange-500  hover:bg-orange-500 border-orange-500 hover:border-orange-500 text-sm border-4 text-white ml-4 rounded"
+            type="submit"
+          >
+            Add Pokemon
+          </button>
+        </Form>
       </div>
       <div className="pokemon-card container w-4/5 grid gap-3 justify-center">
         {list}
@@ -65,4 +64,7 @@ export const pokemonLoader = async () => {
   }
   return res;
 };
-
+export const addAction = () =>{
+  const id = Math.floor(Math.random() * 9000) + 1000;
+  return redirect(`/pokemon/${id}/add`)
+}

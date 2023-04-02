@@ -1,8 +1,14 @@
 import React from "react";
-export default function Home(){
-    return(
+import "../index.css"
+import background from "../background.jpg";
+export default function Home() {
+    return (
         <>
-        <h1 className="text-md bold underline">Home</h1>
+            <div style={{ backgroundImage: `url(${background})` }} className="flex flex-row w-full h-full">
+                <div className="flex flex-col">
+
+                </div>
+            </div>
         </>
     )
 }
