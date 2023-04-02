@@ -1,7 +1,36 @@
 import React, { useState } from "react";
-import { Form } from "react-router-dom"
-import profile from "../img.png"
+import { Form,redirect } from "react-router-dom"
 import "../index.css"
+async function createPokemon(newPokemon) {
+    try {
+        let response = await fetch('/pokemon', {
+            method: 'POST',
+            body: JSON.stringify(newPokemon),
+            headers: new Headers({ 'Content-Type': 'application/json' }),
+        }).then((res) => {
+            if (!res.ok) {
+                throw Error({ error: `Could not add new pokemon ${newPokemon.name}` })
+            }
+            return res.json()
+        })
+        return response
+    } catch (error) {
+        console.error('Error:', error)
+    }
+}
+export async function newAction({ request, params }) {
+    const formData = await request.formData()
+    const id = params.id
+    console.log(id);
+    let pokemon = Object.fromEntries(formData)
+    if (!pokemon) {
+        throw new Error('Error in inserting new pokemon ')
+    }
+    pokemon = { id: id, ...pokemon }
+    console.log(pokemon);
+     createPokemon(pokemon)
+    return redirect(`/pokemon/${id}`)
+}
 export default function Add() {
     const [imgSrc, setImgSrc] = useState('');
 
@@ -19,32 +48,55 @@ export default function Add() {
             setImgSrc(reader.result);
         };
     };
+
+    async function addPokemon(event) {
+        event.preventDefault();
+
+        const form = event.target;
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch('/pokemon', {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (!response.ok) {
+                throw new Error(response.statusText);
+            }
+
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
     return (
-        <Form replace method="post" className="w-full max-w-lg my-6">
+        <Form replace method="post" onSubmit={event => addPokemon(event)} className="w-full max-w-lg my-6">
             <div className="flex justify-center my-6">
                 <p className="text-3xl font-bold">Add new Pokemon</p>
             </div>
             <div className="flex flex-wrap mb-3">
                 <div className="w-full">
                     <label className="form-label" >Name</label>
-                    <input className="form-input" id="name" />
+                    <input className="form-input" name="name" id="name" />
                 </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-3">
                 <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label className="form-label" >Height</label>
-                    <input className="form-input" id="height" />
+                    <input className="form-input" name="height" id="height" />
                 </div>
                 <div className="w-full md:w-1/2 px-3">
                     <label className="form-label" >Weight</label>
-                    <input className="form-input" id="weight" />
+                    <input className="form-input" name="weight" id="weight" />
                 </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-3">
                 <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label className="form-label" >Category</label>
                     <div className="relative">
-                        <select className="form-input" id="category">
+                        <select className="form-input" name="category" id="category">
                             <option>Seed</option>
                             <option>Flame</option>
                             <option>Poison</option>
@@ -56,34 +108,34 @@ export default function Add() {
                 </div>
                 <div className="w-full md:w-1/2 px-3">
                     <label className="form-label" >Ability</label>
-                    <input className="form-input" id="ability" />
+                    <input className="form-input" name="ability" id="ability" />
                 </div>
             </div>
             <div className="flex flex-wrap mb-3">
                 <label className="form-label" >Type</label>
                 <div className="w-full ml-4">
                     <div className="flex items-center mb-4">
-                        <input type="checkbox" value="Fire" className="form-checkbox " />
+                        <input type="checkbox" name="typeList[]" value="Fire" className="form-checkbox " />
                         <label className="ml-2 text-lg font-medium text-red-500 ">Fire</label>
                     </div>
                     <div className="flex items-center mb-4">
-                        <input type="checkbox" value="Water" className="form-checkbox " />
+                        <input type="checkbox" name="typeList[]" value="Water" className="form-checkbox " />
                         <label className="ml-2 text-lg font-medium text-blue-400 ">Water</label>
                     </div>
                     <div className="flex items-center mb-4">
-                        <input type="checkbox" value="Grass" className="form-checkbox " />
+                        <input type="checkbox" name="typeList[]" value="Grass" className="form-checkbox " />
                         <label className="ml-2 text-lg font-medium text-green-500 ">Grass</label>
                     </div>
                     <div className="flex items-center mb-4">
-                        <input type="checkbox" value="Poison" className="form-checkbox " />
+                        <input type="checkbox" name="typeList[]" value="Poison" className="form-checkbox " />
                         <label className="ml-2 text-lg font-medium text-purple-500 ">Poison</label>
                     </div>
                     <div className="flex items-center mb-4">
-                        <input type="checkbox" value="Flying" className="form-checkbox " />
+                        <input type="checkbox" name="typeList[]" value="Flying" className="form-checkbox " />
                         <label className="ml-2 text-lg font-medium text-blue-300 ">Flying</label>
                     </div>
                     <div className="flex items-center mb-4">
-                        <input type="checkbox" value="Bug" className="form-checkbox " />
+                        <input type="checkbox" name="typeList[]" value="Bug" className="form-checkbox " />
                         <label className="ml-2 text-lg font-medium text-green-700">Bug</label>
                     </div>
                 </div>
@@ -91,17 +143,20 @@ export default function Add() {
             <div className="flex flex-wrap mb-3">
                 <div className="w-full">
                     <label className="form-label" >Detail</label>
-                    <textarea className="form-input" />
+                    <textarea name="detail" className="form-input" />
                 </div>
             </div>
             <div className="flex flex-wrap mb-3">
                 <div className="w-full">
                     <label className="form-label" >Image</label>
-                    <input onChange={(event) =>changeImg(event)} className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file"  />
+                    <input name="image" onChange={(event) =>changeImg(event)} className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file"  />
                     <div className="w-96 h-96 mt-2">
                         {imgSrc ? <img src={imgSrc} alt="pokemon" /> : null}
                     </div>
                 </div>
+            </div>
+            <div className="flex flex-wrap mb-3 items-center">
+                <button className="mt-4 w-40 flex-shrink-0 bg-orange-500  hover:bg-orange-500 border-orange-500 hover:border-orange-500 text-sm border-4 text-white rounded" type="submit" >Add Pokemon</button>
             </div>
         </Form>
     )

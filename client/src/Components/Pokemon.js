@@ -5,11 +5,10 @@ import "../index.css";
 export default function Pokemon() {
   const pokemon = useLoaderData();
   const list = pokemon.map(item => (
-    
     <Link key={item.id} to={""+item.id}>
       <div className="card max-w-sm rounded shadow-lg transition ease-in-out delay-100  hover:-translate-y-1 hover:scale-110 duration-200">
         <div className="h-52 w-52 bg-slate-200">
-          <img src={myImg} alt="a"></img>
+          <img src={item.imgUrl} alt="a"></img>
         </div>
         <div className="p-3">
           <p className="text-lg font-bold ">{item.name}</p>
@@ -31,11 +30,11 @@ export default function Pokemon() {
   return (
     <>
       <div className="flex items-center border-b border-orange-500 my-6">
-        <Form id="search-form" role="search" >
+        <Form id="search-form" role="search">
           <input
             type="search"
-            name="search-form"
-            id="search-form"
+            name="q"
+            id="q"
             className="appearance-none bg-transparent border-none w-full text-orange-500  mr-3 py-1 px-2 leading-tight focus:outline-none"
             placeholder="Search for..."
           />

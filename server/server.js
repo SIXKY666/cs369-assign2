@@ -1,9 +1,10 @@
 const express = require('express')
-const app = express()
 const fs = require('fs');
+const path = require('path');
 const fileUpload = require('express-fileupload');
 const port = 4000
 const DATA_FILE = "./pokemon.json"
+const app = express()
 
 app.use(express.json())
 app.use(fileUpload());
@@ -35,9 +36,33 @@ app.get('/pokemon/:id', (req, res) => {
         }
     });
 })
+app.get('/images/:filename',(req,res)=>{
+    const fileName = req.params.filename;
+    console.log(fileName);
+    const imagePath = path.join(__dirname,'images', fileName);
+
+    fs.readFile(imagePath, (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(404).send('Image not found');
+        }
+        res.writeHead(200, { 'Content-Type': 'image/png' });
+        res.end(data);
+    });
+})
 
 app.post('/pokemon', (req, res) => {
     const newData = req.body
+    const { image } = req.files
+
+    // If no image submitted, exit
+    if (!image) return res.sendStatus(400);
+
+    // Move the uploaded image to our upload folder
+    image.mv('./images/' + image.name);
+
+    newData["imgUrl"] = './images/' + image.name;
+
     fs.readFile(DATA_FILE, (err, data) => {
         if (err) {
             console.error(err)
@@ -57,18 +82,8 @@ app.post('/pokemon', (req, res) => {
     });
 })
 
-app.put("/products/:id", (req, res) => {
+app.put("/pokemon/:id", (req, res) => {
     const id = req.params.id;
-    const newData = req.body;
-    const { image } = req.files;
-
-    // If no image submitted, exit
-    if (!image) return res.sendStatus(400);
-
-    // Move the uploaded image to our upload folder
-    image.mv('../client/PUBLIC/images/' + image.name);
-
-    newData["filename"] = image.name;
 
     //read file and data
     fs.readFile(DATA_FILE, 'utf8', (err, data) => {
@@ -107,11 +122,11 @@ app.post('/upload', (req, res) => {
     if (!image) return res.sendStatus(400);
 
     // Move the uploaded image to our upload folder
-    image.mv('../client/PUBLIC/images/' + image.name);
+    image.mv('../client/src/images/' + image.name);
 
     res.sendStatus(200);
 });
-app.delete("/products/:id", (req, res) => {
+app.delete("/pokemon/:id", (req, res) => {
     const id = req.params.id;
     const data = JSON.parse(fs.readFileSync(DATA_FILE));
     const index = data.findIndex(item => item.id === id);
