@@ -3,12 +3,6 @@ import { Form,redirect,useParams } from "react-router-dom"
 import "../index.css"
 
 export default function Add() {
-    const checkboxOptions = [
-        { id: 1, label: 'Option 1', checked: false },
-        { id: 2, label: 'Option 2', checked: false },
-        { id: 3, label: 'Option 3', checked: false },
-        // Add more options as needed
-    ];
     const [imgSrc, setImgSrc] = useState('');
     const { id } = useParams();
 
