@@ -2,6 +2,7 @@ import React from "react";
 import { useLoaderData,Form,redirect } from "react-router-dom";
 const Detail = () => {
   const pokemon = useLoaderData();
+  console.log(pokemon.imgUrl);
   return (
     <>
     {/* header */}
@@ -11,7 +12,9 @@ const Detail = () => {
       </div>
       {/* detail */}
       <div className="flex flex-row gap-4 justify-center  ">
-        <div className="w-96 h-96 bg-gray-100"></div>
+        <div className="w-96 h-96 bg-gray-100">
+          <img src={pokemon.imgUrl} alt=""></img>
+        </div>
         <div className="flex flex-col w-1/3">
           <div>
             <p className="text-lg font-normal">{pokemon.detail}</p>

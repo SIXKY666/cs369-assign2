@@ -1,12 +1,10 @@
 const express = require('express')
 const fs = require('fs');
 const path = require('path');
-const multer = require('multer');
 const fileUpload = require('express-fileupload');
 const port = 4000
 const DATA_FILE = "./pokemon.json"
 const app = express()
-const upload = multer({ dest: 'uploads/' });
 
 app.use(express.json())
 app.use(fileUpload());
@@ -27,18 +25,33 @@ app.get('/pokemon', (req, res) => {
 })
 
 app.get('/pokemon/:id', (req, res) => {
-    const id = req.params.id
+    const id = parseInt(req.params.id)
     fs.readFile(DATA_FILE, 'utf8', (err, data) => {
         if (err) {
             res.status(500).send({ error: 'Unable to read data file.' });
         } else {
-            const pokemons = JSON.parse(data)
-            const pokemon = pokemons[Number(id) - 1]
-            res.json(pokemon)
+            const pokemonData = JSON.parse(data)
+            const pokemon = pokemonData.find(pokemon => pokemon.id === id);
+            console.log(pokemon);
+            res.send(pokemon)
         }
     });
 })
 app.get('/images/:filename',(req,res)=>{
+    const fileName = req.params.filename;
+    console.log(fileName);
+    const imagePath = path.join(__dirname,'images', fileName);
+
+    fs.readFile(imagePath, (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(404).send('Image not found');
+        }
+        res.writeHead(200, { 'Content-Type': 'image/png' });
+        res.end(data);
+    });
+})
+app.get('/pokemon/images/:filename',(req,res)=>{
     const fileName = req.params.filename;
     console.log(fileName);
     const imagePath = path.join(__dirname,'images', fileName);
