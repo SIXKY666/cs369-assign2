@@ -145,5 +145,19 @@
         "detail": "a",
         "id": 7838,
         "imgUrl": "./images/bulbasaur.png"
+    },
+    {
+        "name": "DD",
+        "height": "166",
+        "weight": "45",
+        "category": "Seed",
+        "ability": "Kuy",
+        "typeList": [
+            "Fire",
+            "Water"
+        ],
+        "detail": "fhf",
+        "id": 1041,
+        "imgUrl": "./images/channels4_profile.jpg"
     }
 ]
