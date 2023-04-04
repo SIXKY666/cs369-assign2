@@ -1,12 +1,11 @@
 const express = require('express')
 const fs = require('fs');
 const path = require('path');
-const multer = require('multer');
 const fileUpload = require('express-fileupload');
 const port = 4000
 const DATA_FILE = "./pokemon.json"
 const app = express()
-const upload = multer({ dest: 'uploads/' });
+
 
 app.use(express.json())
 app.use(fileUpload());
@@ -117,18 +116,6 @@ app.put("/pokemon/:id", (req, res) => {
         });
     });
 })
-app.post('/upload', (req, res) => {
-    // Get the file that was set to our field named "image"
-    const { image } = req.files;
-
-    // If no image submitted, exit
-    if (!image) return res.sendStatus(400);
-
-    // Move the uploaded image to our upload folder
-    image.mv('../client/src/images/' + image.name);
-
-    res.sendStatus(200);
-});
 app.delete("/pokemon/:id", (req, res) => {
     const id = req.params.id;
     const data = JSON.parse(fs.readFileSync(DATA_FILE));
