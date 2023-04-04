@@ -6,12 +6,12 @@ const Detail = () => {
   return (
     <>
     {/* header */}
-      <div className="flex flex-row gap-2 my-4">
+      <div className="flex flex-row gap-2 my-4 justify-center">
         <p className="text-4xl font-bold">{pokemon.name}</p>
         <p className="text-4xl font-bold text-gray-400">#{pokemon.id}</p>
       </div>
       {/* detail */}
-      <div className="flex flex-row gap-4 justify-center  ">
+      <div className="flex flex-row gap-4 justify-center">
         <div className="w-96 h-96 bg-gray-100">
           <img src={pokemon.imgUrl} alt=""></img>
         </div>

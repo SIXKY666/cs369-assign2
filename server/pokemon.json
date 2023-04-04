@@ -11,7 +11,7 @@
         "category": "Seed",
         "ability": "Overgrow",
         "detail": "There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger.",
-        "imgUrl": "./images/avatar2.png"
+        "imgUrl": "./images/bulbasaur.png"
     },
     {
         "id": 2,
@@ -24,8 +24,8 @@
         "height": "7.69",
         "category": "Seed",
         "ability": "Overgrow",
-        "detail": "",
-        "imgUrl": "./images/avatar2.png"
+        "detail": "When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs.",
+        "imgUrl": "./images/ivysaur.png"
     },
     {
         "id": 3,
@@ -38,8 +38,8 @@
         "height": "15.4",
         "category": "Seed",
         "ability": "Overgrow",
-        "detail": "",
-        "imgUrl": "./images/avatar2.png"
+        "detail": "Its plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight.",
+        "imgUrl": "./images/venusaur.png"
     },
     {
         "id": 4,
@@ -51,8 +51,8 @@
         "height": "15.4",
         "category": "Seed",
         "ability": "Overgrow",
-        "detail": "",
-        "imgUrl": "./images/avatar2.png"
+        "detail": "It has a preference for hot things. When it rains, steam is said to spout from the tip of its tail.",
+        "imgUrl": "./images/charmander.png"
     },
     {
         "id": 5,
@@ -64,8 +64,8 @@
         "height": "15.4",
         "category": "Seed",
         "ability": "Overgrow",
-        "detail": "",
-        "imgUrl": "./images/avatar2.png"
+        "detail": "It has a barbaric nature. In battle, it whips its fiery tail around and slashes away with sharp claws.",
+        "imgUrl": "./images/charmeleon.png"
     },
     {
         "id": 6,
@@ -78,8 +78,8 @@
         "height": "15.4",
         "category": "Seed",
         "ability": "Overgrow",
-        "detail": "",
-        "imgUrl": "./images/avatar2.png"
+        "detail": "It spits fire that is hot enough to melt boulders. It may cause forest fires by blowing flames.",
+        "imgUrl": "./images/charizard.png"
     },
     {
         "id": 7,
@@ -91,8 +91,8 @@
         "height": "15.4",
         "category": "Seed",
         "ability": "Overgrow",
-        "detail": "",
-        "imgUrl": "./images/avatar2.png"
+        "detail": "When it retracts its long neck into its shell, it squirts out water with vigorous force.",
+        "imgUrl": "./images/squirtle.png"
     },
     {
         "id": 8,
@@ -104,8 +104,8 @@
         "height": "15.4",
         "category": "Seed",
         "ability": "Overgrow",
-        "detail": "",
-        "imgUrl": "./images/avatar2.png"
+        "detail": "It is recognized as a symbol of longevity. If its shell has algae on it, that Wartortle is very old.",
+        "imgUrl": "./images/wartortle.png"
     },
     {
         "id": 9,
@@ -117,8 +117,8 @@
         "height": "15.4",
         "category": "Seed",
         "ability": "Overgrow",
-        "detail": "",
-        "imgUrl": "./images/avatar2.png"
+        "detail": "It crushes its foe under its heavy body to cause fainting. In a pinch, it will withdraw inside its shell.",
+        "imgUrl": "./images/blastoise.png"
     },
     {
         "id": 10,
@@ -130,34 +130,8 @@
         "height": "15.4",
         "category": "Seed",
         "ability": "Overgrow",
-        "detail": "",
-        "imgUrl": "./images/avatar2.png"
-    },
-    {
-        "name": "Natdanai Khemtong",
-        "height": "a",
-        "weight": "a",
-        "category": "Seed",
-        "ability": "a",
-        "typeList": [
-            "Fire"
-        ],
-        "detail": "a",
-        "id": 7838,
-        "imgUrl": "./images/bulbasaur.png"
-    },
-    {
-        "name": "DD",
-        "height": "166",
-        "weight": "45",
-        "category": "Seed",
-        "ability": "Kuy",
-        "typeList": [
-            "Fire",
-            "Water"
-        ],
-        "detail": "fhf",
-        "id": 1041,
-        "imgUrl": "./images/channels4_profile.jpg"
+        "detail": "For protection, it releases a horrible stench from the antenna on its head to drive away enemies.",
+        "imgUrl": "./images/caterpie.png"
     }
+    
 ]

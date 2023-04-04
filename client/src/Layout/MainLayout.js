@@ -6,10 +6,10 @@ import Loader from "../Components/Loader";
 const MainLayout = () => {
   const navigation = useNavigation();
   return (
-    <div className="w-full">
+    <div className="w-full h-full bg-snow">
       <Navbar />
-      <div className="flex flex-col w-full items-center justify-center mb-10">
-        {navigation.state === "loading" ? <Loader/> : ""} <Outlet />
+      <div className="flex flex-col w-full h-full">
+        {navigation.state === "loading" ? <Loader/> : ""}
         <Outlet />
       </div>
       <footer></footer>

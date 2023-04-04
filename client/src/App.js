@@ -9,7 +9,7 @@ import {
 import MainLayout from "./Layout/MainLayout";
 import Home from "./Components/Home"
 import Pokemon,{pokemonLoader,addAction} from "./Components/Pokemon"
-import Add, { newAction } from "./Components/Add"
+import Add from "./Components/Add"
 import Edit from "./Components/Edit"
 import './App.css';
 import Detail,{detailLoader,edit} from "./Components/Detail";

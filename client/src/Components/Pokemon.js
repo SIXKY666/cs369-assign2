@@ -46,17 +46,19 @@ export default function Pokemon() {
     ));
   return (
     <>
-      <div className="flex items-center border-b border-orange-500 my-6">
-        <Form id="search-form" role="search" method="get">
-          <input
-            type="search"
-            name="q"
-            id="q"
-            className="appearance-none bg-transparent border-none w-full text-orange-500  mr-3 py-1 px-2 leading-tight focus:outline-none"
-            placeholder="Search for..."
-            onChange={(e) => setSearch(e.target.value)}
-          />
-        </Form>
+      <div className="flex justify-center mt-4 items-center">
+        <div className="flex w-max border-b border-orange-500">
+          <Form id="search-form" role="search" method="get">
+            <input
+              type="search"
+              name="q"
+              id="q"
+              className="bg-transparent border-none w-full text-orange-500  mr-3 py-1 px-2 leading-tight focus:outline-none "
+              placeholder="Search for..."
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </Form>
+        </div>
 
         <Form method="post">
           <button
@@ -67,8 +69,10 @@ export default function Pokemon() {
           </button>
         </Form>
       </div>
-      <div className="pokemon-card container w-4/5 grid gap-3 justify-center">
-        {list}
+      <div className="flex justify-center mt-4">
+        <div className="pokemon-card container w-4/5 grid gap-3">
+          {list}
+        </div>
       </div>
     </>
   );
