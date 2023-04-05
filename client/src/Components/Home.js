@@ -32,7 +32,7 @@ export default function Home() {
               <img className="h-96 w-auto scale-up-center" src={pikachu} alt="Pikachu" />
             </div>
             <div className="flex items-center">
-              <img className="flex justify-center h-44 w-auto shake-lr" src={pokeball} alt="pokeball" />
+              <img className="flex justify-center h-44 w-auto scale-up-center" src={pokeball} alt="pokeball" />
             </div>
           </div>
         </div>

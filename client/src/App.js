@@ -12,7 +12,7 @@ import Pokemon,{pokemonLoader,addAction} from "./Components/Pokemon"
 import Add from "./Components/Add"
 import Edit from "./Components/Edit"
 import './App.css';
-import Detail,{detailLoader,edit} from "./Components/Detail";
+import Detail,{detailLoader,edit,remove} from "./Components/Detail";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +22,7 @@ const router = createBrowserRouter(
       <Route path="pokemon/:id" element={<Detail/>} loader={detailLoader} action={edit}/>
       <Route path="pokemon/:id/add" element={<Add/>}/>
       <Route path="pokemon/:id/edit" element={<Edit/>} loader={detailLoader} />
+      <Route path="pokemon/:id/remove" element={<Detail/>} action={remove} />
     </Route>
   )
 );

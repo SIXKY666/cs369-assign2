@@ -1,7 +1,35 @@
-import React from "react";
-import { useLoaderData,Form,redirect } from "react-router-dom";
+import React,{useState} from "react";
+import { useLoaderData,Form } from "react-router-dom";
 const Edit = () => {
     const pokemon = useLoaderData();
+    const [imgSrc, setImgSrc] = useState('');
+    const [data, setData] = useState(pokemon);
+
+    const onInputChange = (event) => {
+        console.log(event.target + " : " + event.target.value);
+        const { name, value } = event.target;
+        if (name === "stocked") {
+            setData({ ...data, [name]: value === "true" });
+        } else {
+            setData({ ...data, [name]: value });
+        }
+    };
+
+    //handle to display select file image 
+    const changeImg = (event) => {
+        const file = event.target.files[0];
+
+        if (!file) {
+            console.log('Please select an image file');
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            setImgSrc(reader.result);
+        };
+    };
     return (
         <>
             <Form replace method="post" className="w-full max-w-lg my-6">
@@ -11,36 +39,33 @@ const Edit = () => {
             <div className="flex flex-wrap mb-3">
                 <div className="w-full">
                     <label className="form-label" >Name</label>
-                    <input className="form-input" id="name" value={pokemon.name}/>
+                    <input className="form-input" onChange={event => onInputChange(event)} id="name" value={pokemon.name} required/>
                 </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-3">
                 <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label className="form-label" >Height</label>
-                    <input className="form-input" id="height" value={pokemon.height}/>
+                        <input className="form-input" id="height" onChange={event => onInputChange(event)} value={pokemon.height}/>
                 </div>
                 <div className="w-full md:w-1/2 px-3">
                     <label className="form-label" >Weight</label>
-                        <input className="form-input" id="weight" value={pokemon.weight} />
+                        <input className="form-input" id="weight" onChange={event => onInputChange(event)} value={pokemon.weight} />
                 </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-3">
                 <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label className="form-label" >Category</label>
                     <div className="relative">
-                        <select className="form-input" id="category">
+                            <select className="form-input" name="category" onChange={event => onInputChange(event)} id="category">
                             <option>Seed</option>
                             <option>Flame</option>
                             <option>Poison</option>
                         </select>
-                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                            <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-                        </div>
                     </div>
                 </div>
                 <div className="w-full md:w-1/2 px-3">
                     <label className="form-label" >Ability</label>
-                        <input className="form-input" id="ability" value={pokemon.ability} />
+                        <input className="form-input" name="ability" onChange={event => onInputChange(event)} id="ability" value={pokemon.ability} />
                 </div>
             </div>
             <div className="flex flex-wrap mb-3">
@@ -72,13 +97,13 @@ const Edit = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-wrap mb-3">
+            <div className="flex flex-wrap mb-3"> 
                 <div className="w-full">
                     <label className="form-label" >Detail</label>
-                    <textarea className="form-input" value={pokemon.detail}/>
+                        <textarea className="form-input" name="detail" onChange={event => onInputChange(event)} value={pokemon.detail}/>
                 </div>
             </div>
-            {/* <div className="flex flex-wrap mb-3">
+            <div className="flex flex-wrap mb-3">
                 <div className="w-full">
                     <label className="form-label" >Image</label>
                     <input onChange={(event) => changeImg(event)} className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" />
@@ -86,7 +111,7 @@ const Edit = () => {
                         {imgSrc ? <img src={imgSrc} alt="pokemon" /> : null}
                     </div>
                 </div>
-            </div> */}
+            </div>
             </Form>
         </>
     );

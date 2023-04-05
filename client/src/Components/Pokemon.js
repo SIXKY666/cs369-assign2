@@ -3,10 +3,9 @@ import { useLoaderData, Form, Link, redirect } from "react-router-dom";
 import "../index.css";
 export default function Pokemon() {
   const pokemon = useLoaderData();
-  const [data, setData] = useState(pokemon);
   const [search, setSearch] = useState("");
 
-  const list = data
+  const list = pokemon
     .filter((item) => {
       return search.toLocaleLowerCase() === ""
         ? item

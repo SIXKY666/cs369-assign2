@@ -2,7 +2,6 @@ import React from "react";
 import { useLoaderData,Form,redirect } from "react-router-dom";
 const Detail = () => {
   const pokemon = useLoaderData();
-  console.log(pokemon.imgUrl);
   return (
     <>
     {/* header */}
@@ -52,6 +51,9 @@ const Detail = () => {
           <Form replace action="edit">
             <button type="submit" className="mt-4 w-40 flex-shrink-0 bg-orange-500  hover:bg-orange-500 border-orange-500 hover:border-orange-500 text-sm border-4 text-white rounded">EDIT</button>
           </Form>
+          <Form replace method="post" action="remove">
+            <button type="submit" className="mt-4 w-40 flex-shrink-0 bg-orange-500  hover:bg-orange-500 border-orange-500 hover:border-orange-500 text-sm border-4 text-white rounded">Delete</button>
+          </Form>
         </div>
       </div>
     </>
@@ -65,6 +67,16 @@ export const detailLoader = async ({ params }) => {
   }
   return res;
 };
+export const remove = async ({ params }) => {
+  const { id } = params
+  const res = await fetch('/pokemon/' + id, {
+    method: "DELETE"
+  })
+  if (!res.ok) {
+    throw Error("Could not delete product")
+  }
+  return redirect(`/pokemon`)
+}
 export const edit = ({ params }) => {
   const { id } = params
   return redirect('/pokemon/' + id + "/edit")

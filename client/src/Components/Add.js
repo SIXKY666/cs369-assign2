@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form,redirect,useParams } from "react-router-dom"
+import { Form,redirect,useParams,useNavigate } from "react-router-dom"
 import "../index.css"
 
 export default function Add() {
@@ -8,6 +8,7 @@ export default function Add() {
 
     //handle to display select file image 
     const changeImg = (event) => {
+        event.preventDefault()
         const file = event.target.files[0];
 
         if (!file) {
@@ -33,18 +34,21 @@ export default function Add() {
                 method: 'POST',
                 body: formData,
             });
-
             if (!response.ok) {
                 throw new Error(response.statusText);
             }
-            redirect(`/pokemon/${id}`)
         } catch (error) {
             console.error(error);
         }
+        return redirect("/pokemon"+id)
     }
+    function testRe(){
+        window.location.href = '/pokemon'
+    }
+
     return (
         <div className="flex fex-col justify-center">
-            <Form replace method="post" onSubmit={event => addPokemon(event)} className="w-full max-w-2xl">
+            <Form replace method="post"   className="w-full max-w-2xl">
                 <div className="flex justify-center my-6">
                     <p className="text-3xl font-bold">Add New Pokemon</p>
                 </div>
@@ -135,7 +139,7 @@ export default function Add() {
                     </div>
                 </div>
                 <div className="flex flex-wrap mb-3 justify-center">
-                    <button className="btn h-14 text-3xl" type="submit" >Add Pokemon</button>
+                    <button className="btn h-14 text-3xl" type="button" onClick={testRe()}>Add Pokemon</button>
                 </div>
             </Form>
         </div>

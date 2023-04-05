@@ -132,7 +132,7 @@ app.put("/pokemon/:id", (req, res) => {
     });
 })
 app.delete("/pokemon/:id", (req, res) => {
-    const id = req.params.id;
+    const id = Number(req.params.id);
     const data = JSON.parse(fs.readFileSync(DATA_FILE));
     const index = data.findIndex(item => item.id === id);
     if (index !== -1) {
