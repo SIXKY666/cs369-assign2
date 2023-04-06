@@ -99,51 +99,6 @@ app.post('/pokemon', (req, res) => {
     });
 })
 
-app.put("/pokemon/:id", (req, res) => {
-    const id = req.params.id;
-
-    //read file and data
-    fs.readFile(DATA_FILE, 'utf8', (err, data) => {
-        if (err) {
-            res.status(500).json({ message: 'Error reading data file!' });
-            return;
-        }
-
-        //find an item by id
-        const existingData = JSON.parse(data);
-        const index = existingData.findIndex(product => product.id === id);
-        if (index === -1) {
-            res.status(404).json({ message: `Data with ID ${id} not found!` });
-            return;
-        }
-
-        //insert update data into the index
-        const updatedData = { ...existingData[index], ...newData };
-        existingData[index] = updatedData;
-
-        //write file
-        fs.writeFile(DATA_FILE, JSON.stringify(existingData), (err) => {
-            if (err) {
-                res.status(500).json({ message: 'Error writing to data file!' });
-                return;
-            }
-            res.json({ message: 'Data updated successfully!', data: updatedData });
-        });
-    });
-})
-app.delete("/pokemon/:id", (req, res) => {
-    const id = Number(req.params.id);
-    const data = JSON.parse(fs.readFileSync(DATA_FILE));
-    const index = data.findIndex(item => item.id === id);
-    if (index !== -1) {
-        data.splice(index, 1);
-        fs.writeFileSync(DATA_FILE, JSON.stringify(data));
-        res.status(200).json({ message: 'Data deleted successfully' });
-    } else {
-        res.status(404).json({ message: 'Data not found' });
-    }
-})
-
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`Pokemon app listening on port ${port}`)
 })
