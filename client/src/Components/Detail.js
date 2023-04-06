@@ -48,12 +48,6 @@ const Detail = () => {
                           <p className="ml-2 font-semibold"> {type}</p>)
           ))}
           </div>
-          <Form replace action="edit">
-            <button type="submit" className="mt-4 w-40 flex-shrink-0 bg-orange-500  hover:bg-orange-500 border-orange-500 hover:border-orange-500 text-sm border-4 text-white rounded">EDIT</button>
-          </Form>
-          <Form replace method="post" action="remove">
-            <button type="submit" className="mt-4 w-40 flex-shrink-0 bg-orange-500  hover:bg-orange-500 border-orange-500 hover:border-orange-500 text-sm border-4 text-white rounded">Delete</button>
-          </Form>
         </div>
       </div>
     </>
