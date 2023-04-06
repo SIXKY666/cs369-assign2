@@ -122,14 +122,28 @@
     {
         "name": "Jack",
         "height": "180",
-        "weight": "adad",
+        "weight": "88",
         "category": "Flame",
-        "ability": "adad",
+        "ability": "ReactJS",
         "typeList": [
             "Fire",
             "Water"
         ],
-        "detail": "k",
+        "detail": "Natdanai Khemtong 6309681846",
+        "id": 6431,
+        "imgUrl": "./images/avatar2.png"
+    },
+    {
+        "name": "DD",
+        "height": "180",
+        "weight": "88",
+        "category": "Flame",
+        "ability": "ReactJS",
+        "typeList": [
+            "Fire",
+            "Water"
+        ],
+        "detail": "Rungrawin Markboon 6309681788",
         "id": 6431,
         "imgUrl": "./images/avatar2.png"
     }
